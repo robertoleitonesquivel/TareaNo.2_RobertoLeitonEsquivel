@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TareaNo._2.Models.ResultadosEncuesta>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Nueva encuesta", "Encuesta")
+</p>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Posición
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Clasificación
+        </th>
+        <th>
+            Diferencia procentual
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Posicion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clasificacion)%
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiferenciaPorcentual)%
+            </td>
+        </tr>
+    }
+
+</table>

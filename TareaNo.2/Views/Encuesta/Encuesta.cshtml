@@ -1,0 +1,86 @@
+﻿@model TareaNo._2.Models.Encuesta
+
+@{
+    ViewBag.Title = "Encuesta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Add","Encuesta",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <section class="card">
+        <div class="card-header">
+            <h1>Realizar encuesta</h1>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Pais</label>
+                        @Html.DropDownListFor(model => model.Pais, ViewBag.Paises as SelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Pais, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Rol</label>
+                        @Html.DropDownListFor(model => model.Rol, ViewBag.Roles as SelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Lenguaje primario</label>
+                        @Html.DropDownListFor(model => model.CodigoLenguajePrimario, ViewBag.Lenguajes as SelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CodigoLenguajePrimario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Lenguaje Secundario</label>
+                        @Html.DropDownListFor(model => model.CodigoLenguajeSecundario, ViewBag.Lenguajes as SelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CodigoLenguajeSecundario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Puntaje primario</label>
+                        @Html.EditorFor(model => model.LenguajeProgramacionPrimario, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                        @Html.ValidationMessageFor(model => model.LenguajeProgramacionPrimario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Puntaje Secundario</label>
+                        @Html.EditorFor(model => model.LenguajeProgramacionSecundario, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                        @Html.ValidationMessageFor(model => model.LenguajeProgramacionSecundario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-danger" id="btnGuardar">Guardar</button>
+        </div>
+    </section>
+
+}
+
+
+
+
